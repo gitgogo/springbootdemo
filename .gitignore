@@ -3,7 +3,10 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-
+*.iml
+.DS_Store
+.idea/
+workspace.xml
 ### STS ###
 .apt_generated
 .classpath
