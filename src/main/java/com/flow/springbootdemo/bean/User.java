@@ -1,4 +1,4 @@
-package com.flow.springbootdemo.domain;
+package com.flow.springbootdemo.bean;
 
 /**
  * @Auther: liudongjie
@@ -15,7 +15,7 @@ import lombok.Data;
 public class User {
 
     @ApiModelProperty("用户编号")
-    private Long id;
+    private Long userId;
     @ApiModelProperty("用户姓名")
     private String name;
     @ApiModelProperty("用户年龄")

@@ -1,4 +1,4 @@
-package com.flow.springbootdemo.web;
+package com.flow.springbootdemo.controller;
 
 /**
  * @Auther: liudongjie
@@ -6,8 +6,10 @@ package com.flow.springbootdemo.web;
  * @Description:
  */
 
-import com.flow.springbootdemo.domain.User;
+import com.flow.springbootdemo.bean.User;
+import com.flow.springbootdemo.service.UserService;
 import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -16,9 +18,22 @@ import java.util.*;
 @RestController
 @RequestMapping(value = "/users")     // 通过这里配置使下面的映射都在/users下
 public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping("/query")
+    public User queryUser(){
+        return userService.selectUserByName("Lucy");
+    }
+
+    @RequestMapping("/insert")
+    public int testAddUser(){
+        userService.insertUser();
+        return 2;
+    }
 
     // 创建线程安全的Map，模拟users信息的存储
-    static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
+    private static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 
     /**
      * 处理"/users/"的GET请求，用来获取用户列表
@@ -43,7 +58,7 @@ public class UserController {
     @PostMapping("/")
     public String postUser(@RequestBody User user) {
         // @RequestBody注解用来绑定通过http请求中application/json类型上传的数据
-        users.put(user.getId(), user);
+        users.put(user.getUserId(), user);
         return "success";
     }
 

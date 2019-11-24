@@ -1,6 +1,6 @@
 package com.flow.springbootdemo;
 
-import com.flow.springbootdemo.web.HelloController;
+import com.flow.springbootdemo.controller.HelloController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
