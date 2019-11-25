@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class UserService {
-//    @Autowired
+    @Autowired
     private UserDao userDao;
 
     /**
